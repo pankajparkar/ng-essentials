@@ -1,5 +1,6 @@
-import { JsonPipe, NgForOf } from '@angular/common';
-import { Component } from '@angular/core';
+import { AsyncPipe, JsonPipe, NgForOf } from '@angular/common';
+import { Component, inject } from '@angular/core';
+import { ApiService } from './services/api.service';
 
 @Component({
   standalone: true,
@@ -14,7 +15,7 @@ import { Component } from '@angular/core';
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let post of posts">
+        <tr *ngFor="let post of posts$ | async">
           <td>{{ post.id }}</td>
           <td>{{ post.title }}</td>
         </tr>
@@ -26,20 +27,12 @@ import { Component } from '@angular/core';
   `],
   imports: [
     JsonPipe,
-    NgForOf
+    NgForOf,
+    AsyncPipe,
   ]
 })
 export class AppComponent {
-  posts: any[] = [
-    {
-      id: 'asdf',
-      title: 'Title 1',
-      description: 'Description 1',
-    },
-    {
-      id: 'asds',
-      title: 'Title 2',
-      description: 'Description 1',
-    },
-  ];
+  readonly apiService = inject(ApiService);
+
+  posts$ = this.apiService.getPosts();
 }
