@@ -1,18 +1,45 @@
+import { JsonPipe, NgForOf } from '@angular/common';
 import { Component } from '@angular/core';
-import { UserDetailsComponent } from "./user-details/user-details.component";
 
 @Component({
   standalone: true,
   selector: 'ne-root',
   template: `
-    <h1>{{title}}</h1>
-    <ne-user-details></ne-user-details>
+    <h2>Post List</h2>
+    <table>
+      <thead>
+        <tr>
+          <td>Id</td>
+          <td>Title</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let post of posts">
+          <td>{{ post.id }}</td>
+          <td>{{ post.title }}</td>
+        </tr>
+      </tbody>
+    </table>
   `,
   styles: [`
 
   `],
-  imports: [UserDetailsComponent]
+  imports: [
+    JsonPipe,
+    NgForOf
+  ]
 })
 export class AppComponent {
-  title = 'ng-essentials';
+  posts: any[] = [
+    {
+      id: 'asdf',
+      title: 'Title 1',
+      description: 'Description 1',
+    },
+    {
+      id: 'asds',
+      title: 'Title 2',
+      description: 'Description 1',
+    },
+  ];
 }
