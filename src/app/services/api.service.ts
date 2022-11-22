@@ -15,4 +15,8 @@ export class ApiService {
   getPosts() {
     return this.http.get<any[]>(API_URL)
   }
+
+  getPost(id: number) {
+    return this.http.get<any[]>(`${API_URL}/${id}`)
+  }
 }

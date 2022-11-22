@@ -10,13 +10,16 @@
           "style": "scss",
           "skipTests": true,
           "inlineStyle": true,
-          "inlineTemplate": true
+          "inlineTemplate": true,
+          "standalone": true
         },
         "@schematics/angular:directive": {
-          "skipTests": true
+          "skipTests": true,
+          "standalone": true
         },
         "@schematics/angular:pipe": {
-          "skipTests": true
+          "skipTests": true,
+          "standalone": true
         },
         "@schematics/angular:service": {
           "skipTests": true
