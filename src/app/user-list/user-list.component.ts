@@ -9,11 +9,11 @@ import { ApiService } from '../services/api.service';
   selector: 'ne-user-list',
   template: `
     <h2>Post List</h2>
-    <table *ngIf="!selectedPost">
+    <table class="posts" *ngIf="!selectedPost">
       <thead>
         <tr>
-          <td>Id</td>
-          <td>Title</td>
+          <th>Id</th>
+          <th>Title</th>
         </tr>
       </thead>
       <tbody>
@@ -25,7 +25,27 @@ import { ApiService } from '../services/api.service';
     </table>
   `,
   styles: [`
+    .posts {
+      border-collapse: collapse;
+      width: 100%;
+    }
 
+    .posts td, .posts th {
+      border: 1px solid #ddd;
+      padding: 8px;
+    }
+
+    .posts tr:nth-child(even){background-color: #f2f2f2;}
+
+    .posts tr:hover {background-color: #ddd;}
+
+    .posts th {
+      padding-top: 12px;
+      padding-bottom: 12px;
+      text-align: left;
+      background-color: #04AA6D;
+      color: white;
+    }
   `],
   imports: [
     JsonPipe,

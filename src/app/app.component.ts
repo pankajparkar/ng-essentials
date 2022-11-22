@@ -2,11 +2,13 @@ import { AsyncPipe, JsonPipe, NgForOf, NgIf } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { ApiService } from './services/api.service';
+import { NavbarComponent } from "./shared/navbar/navbar.component";
 
 @Component({
   standalone: true,
   selector: 'ne-root',
   template: `
+    <ne-navbar></ne-navbar>
     <router-outlet></router-outlet>
   `,
   styles: [`
@@ -18,6 +20,7 @@ import { ApiService } from './services/api.service';
     AsyncPipe,
     NgIf,
     RouterOutlet,
+    NavbarComponent,
   ]
 })
 export class AppComponent {
