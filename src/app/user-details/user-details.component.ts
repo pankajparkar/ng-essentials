@@ -14,8 +14,8 @@ import { ActivatedRoute, RouterLink } from '@angular/router';
     NgForOf
   ],
   template: `
-    <div *ngIf="selectedPost$ | async as selectedPost">
-      <div>{{selectedPost.id}}</div>
+    <div *ngIf="selectedPost$ | async as selectedPost" class="post">
+      <h3>Post Details</h3>
       <div>{{selectedPost.title}}</div>
       <h3>Comments</h3>
       <ul>
@@ -26,13 +26,19 @@ import { ActivatedRoute, RouterLink } from '@angular/router';
       <button type="button" [routerLink]="['/user/edit', selectedPost.id]">
         Edit
       </button>
-      <button type="button" routerLink="/user/list">
+      <button class="cancel" type="button" routerLink="/user/list">
         Cancel
       </button>
     </div>
   `,
   styles: [
     `
+    .post {
+      padding: 12px;
+    }
+    .cancel {
+      margin-left: 10px
+    }
     `
   ]
 })

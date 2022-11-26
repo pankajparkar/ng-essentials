@@ -15,14 +15,14 @@ import { ApiService } from '../services/api.service';
   ],
   template: `
     <h2>Post</h2>
-    <form *ngIf="selectedPost$ | async as selectedPost" novalidate (ngSubmit)="submit()">
-      <div>
+    <form class="post" *ngIf="selectedPost$ | async as selectedPost" novalidate (ngSubmit)="submit()">
+      <div class="form-control">
         <label>
           Id:
         </label>
          <input name="id" type="text" readonly [ngModel]="selectedPost.id">
       </div>
-      <div>
+      <div class="form-control">
         <label>
           Title:
         </label>
@@ -34,6 +34,17 @@ import { ApiService } from '../services/api.service';
     </form>
   `,
   styles: [
+    `
+    .post {
+      padding: 0 12px;
+    }
+    .cancel {
+      margin-left: 10px
+    }
+    .form-control {
+      margin: 8px 0;
+    }
+    `
   ]
 })
 export class UserEditComponent {
